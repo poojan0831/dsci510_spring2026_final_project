@@ -15,7 +15,56 @@ In addition, the project integrates external data sources, including the Spotify
 | 3 | Billboard Hot 100 Songs | https://www.kaggle.com/datasets/dhruvildave/billboard-the-hot-100-songs | File | date, rank, artist, song | CSV | Yes | ~1000 |
 
 # Results 
-_describe your findings_
+## Key Analysis
+
+### 1. Feature–Popularity Relationship
+Correlation analysis showed that no individual audio feature strongly correlates with popularity. Features like energy and loudness are related to each other, but not directly to popularity. This indicates that song success depends on a combination of attributes rather than a single factor.
+
+---
+
+### 2. Evolution of Music Trends
+Year-wise analysis revealed that:
+- Early 2000s songs were dominated by high energy and loudness.
+- Over time, music became more balanced.
+- Danceability and emotional tone (valence) gained importance in later years.
+
+This suggests a shift toward more diverse and expressive music styles.
+
+---
+
+### 3. Clustering (K-Means)
+Songs were grouped into three clusters based on audio features:
+- **High Energy Songs:** Loud and energetic tracks.
+- **Balanced Songs:** Moderate across all features.
+- **Low Energy / Emotional Songs:** Calm or expressive tracks.
+
+Clustering showed that combinations of features define song types more effectively than individual features.
+
+---
+
+### 4. PCA (Dimensionality Reduction)
+Principal Component Analysis reduced the feature space into:
+- **Intensity (PC1):** Driven by energy and loudness.
+- **Emotion/Rhythm (PC2):** Influenced by valence and danceability.
+
+This helped visualize the structure of music and confirmed the separation between different song types.
+
+---
+
+### 5. Spotify API Enrichment
+Spotify API was used to retrieve metadata (album and release date) for top songs across different time periods. This enabled temporal analysis and integration with Billboard data.
+
+---
+
+### 6. Billboard Comparison
+Spotify songs were matched with Billboard rankings using song name, artist, and a 90-day window after release.
+
+Key findings:
+- Not all popular Spotify songs appear on Billboard charts.
+- Chart success is more selective and influenced by external factors.
+- Most songs take time after release to achieve chart success.
+- Only a small number of songs reach top rankings.
+
 
 # Installation
 This project uses the Spotify API for accessing song metadata. You can obtain a free API token from the Spotify Developer Dashboard by logging into the Spotify Developers website.
