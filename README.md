@@ -82,6 +82,8 @@ To install all required dependencies, run:
 
 Download the Top Hits Spotify (2000–2019) and Billboard Hot 100 Songs datasets from the links provided in the Data Sources table, and place them in the `data/` directory.
 
+Also create an empty folder `results`, to store the results.
+
 Complete the setup by following the steps in the Installation section (including configuring the `.env` file and installing dependencies).
 
 Navigate to the `src/` directory and run the main script:
