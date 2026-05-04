@@ -1,3 +1,5 @@
+# Calling the Apotify API to get the metedata about the songs.
+
 import pandas as pd
 from dotenv import load_dotenv
 import requests
@@ -5,6 +7,7 @@ import os
 
 load_dotenv()
 
+# Data to be called through the API
 def spotify_api_calling(spotify):
     spotify_data = []
     top_songs_df = get_top_25(spotify)
@@ -24,6 +27,7 @@ def spotify_api_calling(spotify):
     spotify_api_df = pd.DataFrame(spotify_data)
     return spotify_api_df
 
+# Getting the top 25 over the span of 2 years
 def get_top_25(spotify):
     top_songs_2yr = []
 
@@ -46,6 +50,7 @@ def get_top_25(spotify):
 
     return top_songs_df
 
+# Making the API call
 def search_song(song, artist):
     token = os.getenv("SPOTIFY_API_TOKEN")
     url = "https://api.spotify.com/v1/search"
@@ -72,7 +77,6 @@ def search_song(song, artist):
     try:
         track = data['tracks']['items'][0]
 
-        # ✅ Extract release date (IMPORTANT)
         release_date = track['album']['release_date']
         release_precision = track['album']['release_date_precision']
 
