@@ -1,8 +1,13 @@
+# PCA Analysis
+
+# In this section of the code I have used AI to generate the code for PCA Analysis that integrates with my existing code.
+
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from visualization import pca_scatter_plots, pca_popularity_map
 
+# Main function for PCA Analysis
 def pca_analysis(spotify):
     
     cluster_features = [
@@ -22,11 +27,11 @@ def pca_analysis(spotify):
 
         X = data[cluster_features]
 
-        # Scale
+        # Scaling the data
         scaler = StandardScaler()
         X_scaled = scaler.fit_transform(X)
 
-        # PCA (reduce to 2D)
+        # PCA function
         pca = PCA(n_components=2)
         X_pca = pca.fit_transform(X_scaled)
 
@@ -34,7 +39,6 @@ def pca_analysis(spotify):
         kmeans = KMeans(n_clusters=3, random_state=42)
         clusters = kmeans.fit_predict(X_scaled)
 
-        # Store results
         data = data.copy()
         data['cluster'] = clusters
         data['PC1'] = X_pca[:, 0]
