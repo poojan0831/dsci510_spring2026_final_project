@@ -1,7 +1,12 @@
+# K-Means Clustering Analysis
+
+# In this section of the code, I have used AI to improve the efficiency and structure of the K-Means clustering analysis.
+
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from visualization import elbow_method_for_kmeans, cluster_graphs_per_year
 
+# Main function for K-Means
 def kmeans(spotify):
     cluster_features = [
     'danceability', 'energy', 'loudness',
@@ -23,7 +28,7 @@ def kmeans(spotify):
 
     year_clusters = {}
 
-    # Forming clusters for each year separately to capture temporal trends in song characteristics
+    # Year wise clustering
     for year in sorted(spotify['year'].unique()):
 
         data = spotify[spotify['year'] == year]
@@ -44,7 +49,7 @@ def kmeans(spotify):
 
         year_clusters[year] = data
 
-    # Cluster Tables for Each Year
+    # Year wise Cluster table
     print("\nCluster Analysis by Year:")
     for year in year_clusters:
         print(f"\nYear: {year}")
@@ -63,7 +68,7 @@ def kmeans(spotify):
             .sort_values(ascending=False)
         )
 
-    # Using elbow method for the Best value of k
+    # Using elbow method to find the best value of k
     sample_year = list(year_clusters.keys())[0]
     data = year_clusters[sample_year]
 
