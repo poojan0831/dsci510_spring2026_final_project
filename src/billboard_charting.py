@@ -1,3 +1,5 @@
+# Comparing the Spotify and Billboard data
+
 import pandas as pd
 import re
 from visualization import billboard_distribution, spotify_songs_in_billboard, date_vs_chart, delay_analysis
@@ -6,11 +8,9 @@ def billboard_charting(billboard, spotify_api_df):
     spotify_api_df['song_clean'] = spotify_api_df['spotify_song'].apply(clean_text)
     spotify_api_df['artist_clean'] = spotify_api_df['spotify_artist'].apply(clean_text)
 
-    # Clean Billboard data
     billboard['song_clean'] = billboard['song'].apply(clean_text)
     billboard['artist_clean'] = billboard['artist'].apply(clean_text)
 
-    # Convert dates
     spotify_api_df['release_date'] = pd.to_datetime(spotify_api_df['release_date'], errors='coerce')
     billboard['date'] = pd.to_datetime(billboard['date'], errors='coerce')
 
@@ -25,10 +25,8 @@ def billboard_charting(billboard, spotify_api_df):
         if pd.isna(release_date):
             continue
 
-        # 🎯 90-day window
         end_date = release_date + pd.Timedelta(days=90)
 
-        # Filter Billboard
         bb_filtered = billboard[
             (billboard['song_clean'] == song) &
             (billboard['artist_clean'].str.contains(artist)) &
@@ -37,7 +35,7 @@ def billboard_charting(billboard, spotify_api_df):
         ]
 
         if not bb_filtered.empty:
-            best_rank = bb_filtered['rank'].min()   # 🎯 BEST rank
+            best_rank = bb_filtered['rank'].min()  
 
             best_entry = bb_filtered.loc[bb_filtered['rank'].idxmin()]
 
