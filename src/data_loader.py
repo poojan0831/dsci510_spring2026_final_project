@@ -1,25 +1,21 @@
+# Loading and Handling the datasets
+
 import pandas as pd
 
 
-# -------------------------------
-# Load Spotify Dataset
-# -------------------------------
+# Loading the Spotify Dataset
 def load_spotify_data(path):
     spotify_df = pd.read_csv(path)
     return spotify_df
 
 
-# -------------------------------
-# Load Billboard Dataset
-# -------------------------------
+# Loading the Billboard Dataset
 def load_billboard_data(path):
     billboard_df = pd.read_csv(path)
     return billboard_df
 
 
-# -------------------------------
-# Preview Data (Optional utility)
-# -------------------------------
+# Checking the data
 def preview_data(df, name="Dataset"):
     print(f"\n{name} Preview:")
     print(df.head())
@@ -27,17 +23,13 @@ def preview_data(df, name="Dataset"):
     print("\nColumns:", df.columns.tolist())
 
 
-# -------------------------------
-# Check Missing Values
-# -------------------------------
+# Handling Missing Values
 def check_missing_values(df, name="Dataset"):
     print(f"\nMissing Values in {name}:")
     print(df.isnull().sum())
 
 
-# -------------------------------
-# Basic Info
-# -------------------------------
+# About the data
 def dataset_info(df, name="Dataset"):
     print(f"\n{name} Info:")
     print(df.info())
