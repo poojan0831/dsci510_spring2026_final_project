@@ -1,3 +1,7 @@
+# EDA Analysis for finding the best relevant features and relations between the features
+
+# In this section of the code I have used AI to refine my Eda Analysis code
+
 from sklearn.preprocessing import StandardScaler
 from visualization import correlation_matrix_for_spotify, effects_of_audio_features_on_popularity, features_trends_over_the_year, averarge_popularity_over_the_years, relation_between_each_feature_and_popularity
 
@@ -5,7 +9,7 @@ def eda_analysis(spotify_df):
     
     print("\nEDA Analysis of Spotify Dataset:\n")
 
-    # Select relevant features for EDA
+    # Selecting the most relevant features for EDA
     features = ['artist', 'song', 'duration_ms', 'explicit', 'year', 'popularity',
        'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
        'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
@@ -16,7 +20,7 @@ def eda_analysis(spotify_df):
 
     spotify = spotify_df[features].copy()
     
-    # Checking basic stats
+    # Checking the basic stats
     print("\nChecking the basic statistics of the Spotify dataset:\n")
     print(spotify.describe())
 
@@ -25,12 +29,12 @@ def eda_analysis(spotify_df):
     yearly_avg = spotify.groupby('year').mean(numeric_only=True)
     print(yearly_avg)
 
-    # Correlation analysis
+    # Correlation analysis of features with popularity
     print("\nCorrelation of features with popularity:\n")
     correlation_matrix = spotify.corr(numeric_only=True)
     print(correlation_matrix['popularity'].sort_values(ascending=False))
 
-    # Year-wise correlation analysis
+    # Year-wise correlation analysis for the features
     print("\nCorrelation of features with popularity by year:\n")
 
     for year in spotify['year'].unique():
@@ -41,7 +45,7 @@ def eda_analysis(spotify_df):
     print("For the year 2005:\n")
     print(yearly_correlations[2005])
 
-    #Preparing features for clustering analysis
+    # Preparing features for clustering analysis
     cluster_features = [
     'danceability', 'energy', 'loudness',
     'tempo', 'liveness', 'valence'
