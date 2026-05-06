@@ -92,4 +92,4 @@ Navigate to the `src/` directory and run the main script:
 
 After execution, all generated visualizations and outputs will be saved in the `results/` directory.
 
-## *Note: AI tools were used in this project to help improving the code efficiency, refining structure and resolving minor issues to ensure that all components work smoothly together. Otherwise, all the significant logic and implementation were done manually by me.*
+## *Note: AI tools were used in this project to help improving the code efficiency, refining structure and resolving minor issues to ensure that all components work smoothly together. Otherwise, all the significant logic and implementation were done manually by me. I have took the help of Claude AI and ChatGPT.*
